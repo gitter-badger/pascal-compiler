@@ -23,7 +23,21 @@ namespace CompilerCore
         public Scanner(string path)
         {
             Path = path;
+            Reload();
+        }
+
+        /// <summary>
+        /// (Re-)reads the file that this Scanner is associated with.
+        /// Resets the seek to the beginning of the file and then
+        /// moves the seek to right before the first non-whitespace character
+        /// (or EOF if no such character is found).
+        /// This method is called by the constructor.
+        /// </summary>
+        public void Reload()
+        {
             Lines = File.ReadLines(Path).ToList();
+            LineSeek = 0;
+            CharSeek = 0;
             EatWhitespace();
         }
 
