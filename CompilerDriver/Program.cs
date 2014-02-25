@@ -53,7 +53,8 @@ namespace CompilerDriver
             var exePath = Environment.GetCommandLineArgs()[0];
             var exeName = Path.GetFileName(exePath);
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Usage: {0} <file>", exeName);
+            Console.WriteLine("Usage: {0} <file> [<output-file>]", exeName);
+            Console.WriteLine("If no output file is specified, output is printed to to the console.");
             Console.ResetColor();
         }
 
