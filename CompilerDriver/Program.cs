@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using CompilerCore;
 
 namespace CompilerDriver
@@ -15,13 +16,14 @@ namespace CompilerDriver
             }
             else
             {
-                PrintTokens(args[0]);
+                var outputPath = args.Skip(1).FirstOrDefault();
+                PrintTokens(args[0], outputPath);
             }
 
             Pause();
         }
 
-        private static void PrintTokens(string path)
+        private static void PrintTokens(string path, string outputPath)
         {
             var sc = new Scanner(path);
             var tokens = new List<Token>();
@@ -31,13 +33,18 @@ namespace CompilerDriver
                 tokens.Add(sc.GetNextToken());
             }
 
-            foreach (var token in tokens)
+            var lines = tokens.Select(t => string.Format("{0}\t\t{1}", t.Lexeme, t.CStyleType));
+
+            if (outputPath != null)
             {
-#if DEBUG
-                Console.WriteLine("{0}\t\t{1}\t\t{2}", token.Lexeme, token.CStyleType, token.Line);
-#else
-                Console.WriteLine("{0}\t\t{1}", token.Lexeme, token.CStyleType);
-#endif
+                File.WriteAllLines(outputPath, lines);
+            }
+            else
+            {
+                foreach (var line in lines)
+                {
+                    Console.WriteLine(line);
+                }
             }
         }
 
