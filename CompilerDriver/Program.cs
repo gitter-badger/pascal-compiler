@@ -18,9 +18,7 @@ namespace CompilerDriver
                 PrintTokens(args[0]);
             }
 
-#if DEBUG
             Pause();
-#endif
         }
 
         private static void PrintTokens(string path)
@@ -54,8 +52,10 @@ namespace CompilerDriver
 
         private static void Pause()
         {
+#if DEBUG
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
+#endif
         }
     }
 }
