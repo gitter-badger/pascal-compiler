@@ -39,6 +39,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IScanner.cs" />
+    <Compile Include="Interfaces\ISymbolTable.cs" />
+    <Compile Include="Interfaces\IToken.cs" />
     <Compile Include="Scanner.cs" />
     <Compile Include="Token.cs" />
     <Compile Include="TokenType.cs" />
