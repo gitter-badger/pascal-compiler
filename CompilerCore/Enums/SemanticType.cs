@@ -1,6 +1,6 @@
 ﻿namespace CompilerCore
 {
-    enum SemanticType
+    public enum SemanticType
     {
         Constant, // stconstant
         Enum, // stenum

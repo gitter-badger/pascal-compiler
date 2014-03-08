@@ -1,6 +1,6 @@
 ﻿namespace CompilerCore
 {
-    interface ISymbolTable
+    public interface ISymbolTable
     {
         bool ContainsString(string lexeme);
     }

@@ -1,6 +1,6 @@
 ﻿namespace CompilerCore
 {
-    interface IToken
+    public interface IToken
     {
         string Lexeme { get; }
 

@@ -1,6 +1,6 @@
 ﻿namespace CompilerCore
 {
-    enum DataType
+    public enum DataType
     {
         Integer, // dtinteger
         None, // dtnone
