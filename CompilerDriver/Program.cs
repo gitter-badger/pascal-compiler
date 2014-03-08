@@ -26,14 +26,14 @@ namespace CompilerDriver
         private static void PrintTokens(string path, string outputPath)
         {
             var sc = new Scanner(path);
-            var tokens = new List<Token>();
+            var tokens = new List<IToken>();
 
-            while (!sc.IsAtEof)
+            while (!sc.HasNextToken())
             {
                 tokens.Add(sc.GetNextToken());
             }
 
-            var lines = tokens.Select(t => string.Format("{0}\t\t{1}", t.Lexeme, t.CStyleType));
+            var lines = tokens.Select(TokenFormat);
 
             if (outputPath != null)
             {
@@ -46,6 +46,13 @@ namespace CompilerDriver
                     Console.WriteLine(line);
                 }
             }
+        }
+
+        private static string TokenFormat(IToken token)
+        {
+            var cStyleType = "tok" + token.Type.ToString().ToLower();
+
+            return string.Format("{0}\t\t{1}", token.Lexeme, cStyleType);
         }
 
         private static void PrintUsage()

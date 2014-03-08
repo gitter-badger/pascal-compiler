@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace CompilerCore
 {
-    public class Scanner
+    public class Scanner : IScanner
     {
         private string Path { get; set; } // the path to the file that will be scanned
         private List<string> Lines { get; set; } // the list of lines (with line endings removed) in the file
@@ -18,7 +18,7 @@ namespace CompilerCore
         private char CurrChar { get { return CurrLine[CharSeek]; } }
 
         private bool IsAtEol { get { return CharSeek == CurrLine.Length; } }
-        public bool IsAtEof { get { return LineSeek == Lines.Count; } }
+        private bool IsAtEof { get { return LineSeek == Lines.Count; } }
 
         public Scanner(string path)
         {
@@ -41,7 +41,7 @@ namespace CompilerCore
             EatWhitespace();
         }
 
-        public Token GetNextToken()
+        public IToken GetNextToken()
         {
             if (IsAtEof)
             {
@@ -121,6 +121,11 @@ namespace CompilerCore
             EatWhitespace();
 
             return token;
+        }
+
+        public bool HasNextToken()
+        {
+            return IsAtEof;
         }
 
         private void EatWhitespace()

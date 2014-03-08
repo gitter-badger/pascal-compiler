@@ -1,29 +1,11 @@
 ﻿namespace CompilerCore
 {
-    public class Token
+    public class Token : IToken
     {
         public string Lexeme { get; private set; }
         public int Line { get; private set; } // the line number (not a zero-based index) where the token was encountered
 
         public TokenType Type { get; private set; }
-        public bool IsWord { get { return Type == TokenType.Word; }}
-        public bool IsNumber { get { return Type == TokenType.Number; }}
-        public bool IsOperator { get { return Type == TokenType.Operator; }}
-        public string CStyleType
-        {
-            get
-            {
-                switch (Type)
-                {
-                    case TokenType.Word:
-                        return "tokword";
-                    case TokenType.Number:
-                        return "toknumber";
-                    default:
-                        return "tokop";
-                }
-            }
-        }
 
         internal Token(string lexeme, int line)
         {
