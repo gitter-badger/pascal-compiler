@@ -48,10 +48,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="input\empty.txt">
+    <Content Include="Inputs\Empty.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="input\hw1-sample.txt">
+    <Content Include="Inputs\FromSpec.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Inputs\Jason.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
