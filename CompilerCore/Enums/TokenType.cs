@@ -2,10 +2,6 @@
 {
     public enum TokenType
     {
-        Word, // tokword
-        Number, // toknumber
-        Operator, // tokop
-
         Begin, // tokbegin
         Call, // tokcall
         CloseParen, // tokcloseparen
@@ -29,6 +25,7 @@
         Less, // tokless
         Minus, // tokminus
         NotEqual, // toknotequal
+        Number, // toknumber
         OpenParen, // tokopenparen
         Parameters, // tokparameters
         Period, // tokperiod
