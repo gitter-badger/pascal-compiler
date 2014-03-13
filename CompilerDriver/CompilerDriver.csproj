@@ -59,6 +59,19 @@
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if $(ConfigurationName) == Release goto deploy
+
+exit
+
+:deploy
+  rd /S /Q "$(SolutionDir)$(ConfigurationName)" 2&gt;NUL
+  md "$(SolutionDir)$(ConfigurationName)" 2&gt;NUL
+  cd "$(SolutionDir)$(ConfigurationName)"
+  xcopy /Y "$(TargetDir)$(TargetFileName)"
+  xcopy /Y "$(TargetDir)*.dll"
+  xcopy /Y "..\CompilerDriver\Inputs\*.txt"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
