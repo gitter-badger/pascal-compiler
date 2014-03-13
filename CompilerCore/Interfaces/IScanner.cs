@@ -4,6 +4,6 @@
     {
         bool HasNextToken();
 
-        IToken GetNextToken();
+        string GetNextToken();
     }
 }

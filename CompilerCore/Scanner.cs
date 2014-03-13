@@ -6,10 +6,11 @@ using System.Linq;
 
 namespace CompilerCore
 {
-    public class Scanner : IScanner
+    internal class Scanner : IScanner
     {
         private string Path { get; set; } // the path to the file that will be scanned
         private List<string> Lines { get; set; } // the list of lines (with line endings removed) in the file
+        private List<Tuple<string, int>> Tokens { get; set; } // useful for debugging to make sure tokens get recognized correctly
 
         private int LineSeek { get; set; }
         private int CharSeek { get; set; }
@@ -20,28 +21,13 @@ namespace CompilerCore
         private bool IsAtEol { get { return CharSeek == CurrLine.Length; } }
         private bool IsAtEof { get { return LineSeek == Lines.Count; } }
 
-        public Scanner(string path)
+        internal Scanner(string path)
         {
             Path = path;
             Reload();
         }
 
-        /// <summary>
-        /// (Re-)reads the file that this Scanner is associated with.
-        /// Resets the seek to the beginning of the file and then
-        /// moves the seek to right before the first non-whitespace character
-        /// (or EOF if no such character is found).
-        /// This method is called by the constructor.
-        /// </summary>
-        public void Reload()
-        {
-            Lines = File.ReadLines(Path).ToList();
-            LineSeek = 0;
-            CharSeek = 0;
-            EatWhitespace();
-        }
-
-        public IToken GetNextToken()
+        public string GetNextToken()
         {
             if (IsAtEof)
             {
@@ -92,9 +78,9 @@ namespace CompilerCore
                 }
                 else if (char.IsWhiteSpace(ch))
                 {
-                    // lexeme cannot be empty at this point
+                    // The lexeme cannot be empty at this point
                     // because whitespaces are eaten at construction
-                    // and at the end of each token fetch
+                    // and at the end of each token fetch.
                     Debug.Assert(lexeme != "");
 
                     break;
@@ -112,20 +98,37 @@ namespace CompilerCore
                 }
             }
 
-            // Create the token first, AND THEN eat the whitespace so that way
-            // the token gets created with the correct line number passed in;
+            // Create the tuple first, AND THEN eat the whitespace so that way
+            // the tuple gets created with the correct line number passed in;
             // when whitespace gets eaten, the line seek can move forward to
-            // different lines
-            var token = new Token(lexeme, LineSeek+1);
+            // different lines.
+            var tuple = Tuple.Create(lexeme, LineSeek + 1);
+            Tokens.Add(tuple);
 
             EatWhitespace();
 
-            return token;
+            return lexeme;
         }
 
         public bool HasNextToken()
         {
             return IsAtEof;
+        }
+
+        /// <summary>
+        /// (Re-)reads the file that this Scanner is associated with.
+        /// Resets the seek to the beginning of the file and then
+        /// moves the seek to right before the first non-whitespace character
+        /// (or EOF if no such character is found).
+        /// This method is called by the constructor.
+        /// </summary>
+        internal void Reload()
+        {
+            Lines = File.ReadLines(Path).ToList();
+            Tokens = new List<Tuple<string, int>>();
+            LineSeek = 0;
+            CharSeek = 0;
+            EatWhitespace();
         }
 
         private void EatWhitespace()
