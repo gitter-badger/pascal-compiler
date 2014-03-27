@@ -6,14 +6,14 @@ namespace CompilerCore
 {
     public class CompilerFrontend
     {
-        private Scanner Scanner { get; set; }
+        private IScanner Scanner { get; set; }
 
-        private SymbolTable SymbolTable { get; set; }
+        private SymbolTableLinkedImpl SymbolTable { get; set; }
 
         public CompilerFrontend(string path)
         {
             Scanner = new Scanner(path);
-            SymbolTable = new SymbolTable();
+            SymbolTable = new SymbolTableLinkedImpl();
         }
 
         public void Go(string outputPath = null)

@@ -3,11 +3,11 @@ using System.Linq;
 
 namespace CompilerCore
 {
-    internal class SymbolTable : ISymbolTable
+    internal class SymbolTableLinkedImpl : ISymbolTable
     {
         private Dictionary<string, Symbol> Symbols { get; set; }
 
-        internal SymbolTable()
+        internal SymbolTableLinkedImpl()
         {
             Symbols = new Dictionary<string, Symbol>();
             LoadKeywords();
