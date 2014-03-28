@@ -8,7 +8,7 @@ namespace CompilerCore
     {
         private IScanner Scanner { get; set; }
 
-        private SymbolTableLinkedImpl SymbolTable { get; set; }
+        private ISymbolTable SymbolTable { get; set; }
 
         public CompilerFrontend(string path)
         {
