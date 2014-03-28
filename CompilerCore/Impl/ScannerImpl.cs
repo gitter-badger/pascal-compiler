@@ -112,7 +112,7 @@ namespace CompilerCore
 
         public bool HasNextToken()
         {
-            return IsAtEof;
+            return !IsAtEof;
         }
 
         /// <summary>

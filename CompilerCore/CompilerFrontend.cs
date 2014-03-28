@@ -20,7 +20,7 @@ namespace CompilerCore
         {
             var outputLines = new List<string>();
 
-            while (!Scanner.HasNextToken())
+            while (Scanner.HasNextToken())
             {
                 var token = Scanner.GetNextToken();
                 var tt = SymbolTable.GetTokenTypeFor(token);
