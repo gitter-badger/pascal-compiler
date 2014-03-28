@@ -13,7 +13,7 @@ namespace CompilerCore
         public CompilerFrontend(string path)
         {
             Scanner = new ScannerImpl(path);
-            SymbolTable = new SymbolTableLinkedImpl();
+            SymbolTable = new SymbolTableTreeImpl();
         }
 
         public void Go(string outputPath = null)

@@ -29,7 +29,7 @@ namespace CompilerCore
 
         internal void CloseCurrentScope()
         {
-            _currentAttribute = (SymbolAttributeImpl)CurrentAttribute.ParentAttribute;
+            _currentAttribute = (SymbolAttributeImpl) CurrentAttribute.ParentAttribute;
         }
     }
 }
