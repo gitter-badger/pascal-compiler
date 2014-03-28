@@ -23,8 +23,10 @@ namespace CompilerCore
             while (Scanner.HasNextToken())
             {
                 var token = Scanner.GetNextToken();
-                var tt = SymbolTable.GetTokenTypeFor(token);
-                var output = Utils.TokenOutputFormat(token, tt);
+                var symbol = SymbolTable.ContainsString(token)
+                    ? SymbolTable.GetSymbolFor(token)
+                    : SymbolTable.InstallSymbol(token);
+                var output = Utils.TokenOutputFormat(token, symbol.CurrentAttribute.TokenType);
                 outputLines.Add(output);
             }
 

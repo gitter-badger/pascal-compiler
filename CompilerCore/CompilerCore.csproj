@@ -41,14 +41,14 @@
   <ItemGroup>
     <Compile Include="CompilerFrontend.cs" />
     <Compile Include="Enums\DataType.cs" />
+    <Compile Include="Impl\SymbolAttributeImpl.cs" />
+    <Compile Include="Impl\SymbolImpl.cs" />
     <Compile Include="Interfaces\IScanner.cs" />
     <Compile Include="Interfaces\ISymbol.cs" />
     <Compile Include="Interfaces\ISymbolAttribute.cs" />
     <Compile Include="Interfaces\ISymbolTable.cs" />
     <Compile Include="Impl\ScannerImpl.cs" />
     <Compile Include="Enums\SemanticType.cs" />
-    <Compile Include="Symbol.cs" />
-    <Compile Include="SymbolAttribute.cs" />
     <Compile Include="Impl\SymbolTableLinkedImpl.cs" />
     <Compile Include="Enums\TokenType.cs" />
     <Compile Include="Utils.cs" />

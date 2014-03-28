@@ -5,48 +5,39 @@ namespace CompilerCore
 {
     internal class SymbolTableLinkedImpl : ISymbolTable
     {
-        private Dictionary<string, Symbol> Symbols { get; set; }
+        private Dictionary<string, SymbolImpl> SymbolMap { get; set; }
 
         internal SymbolTableLinkedImpl()
         {
-            Symbols = new Dictionary<string, Symbol>();
-            LoadKeywords();
-            LoadOperators();
+            SymbolMap = new Dictionary<string, SymbolImpl>();
+            LoadInitialSymbols();
         }
 
         public bool ContainsString(string lexeme)
         {
-            return Symbols.ContainsKey(lexeme);
+            return SymbolMap.ContainsKey(lexeme);
         }
 
-        internal TokenType GetTokenTypeFor(string lexeme)
+        public ISymbol GetSymbolFor(string lexeme)
         {
-            return GetOrCreateSymbolFor(lexeme).CurrentAttribute.TokenType;
+            return SymbolMap[lexeme];
         }
 
-        private Symbol GetOrCreateSymbolFor(string lexeme)
+        public ISymbol InstallSymbol(string lexeme)
         {
-            if (ContainsString(lexeme))
-            {
-                return Symbols[lexeme];
-            }
-
-            var symbol = new Symbol(lexeme);
-            Symbols[lexeme] = symbol;
+            var symbol = new SymbolImpl(lexeme);
+            SymbolMap[lexeme] = symbol;
             return symbol;
         }
 
-        private void LoadKeywords()
+        private void LoadInitialSymbols()
         {
-            foreach (var symbol in Utils.GetKeywords().Select(GetOrCreateSymbolFor))
+            foreach (var symbol in Utils.GetKeywords().Select(InstallSymbol))
             {
                 symbol.CurrentAttribute.SemanticType = SemanticType.Keyword;
             }
-        }
 
-        private void LoadOperators()
-        {
-            foreach (var symbol in Utils.GetOperators().Select(GetOrCreateSymbolFor))
+            foreach (var symbol in Utils.GetOperators().Select(InstallSymbol))
             {
                 symbol.CurrentAttribute.SemanticType = SemanticType.Operator;
             }
