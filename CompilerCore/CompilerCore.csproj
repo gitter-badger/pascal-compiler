@@ -49,8 +49,10 @@
     <Compile Include="Interfaces\ISymbolTable.cs" />
     <Compile Include="Impl\ScannerImpl.cs" />
     <Compile Include="Enums\SemanticType.cs" />
+    <Compile Include="Scope.cs" />
     <Compile Include="Impl\SymbolTableLinkedImpl.cs" />
     <Compile Include="Enums\TokenType.cs" />
+    <Compile Include="Impl\SymbolTableTreeImpl.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
