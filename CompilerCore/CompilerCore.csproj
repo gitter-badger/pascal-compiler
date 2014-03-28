@@ -42,6 +42,8 @@
     <Compile Include="CompilerFrontend.cs" />
     <Compile Include="Enums\DataType.cs" />
     <Compile Include="Interfaces\IScanner.cs" />
+    <Compile Include="Interfaces\ISymbol.cs" />
+    <Compile Include="Interfaces\ISymbolAttribute.cs" />
     <Compile Include="Interfaces\ISymbolTable.cs" />
     <Compile Include="Impl\ScannerImpl.cs" />
     <Compile Include="Enums\SemanticType.cs" />
