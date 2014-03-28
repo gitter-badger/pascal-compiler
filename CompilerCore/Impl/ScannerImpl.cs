@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace CompilerCore
 {
-    internal class Scanner : IScanner
+    internal class ScannerImpl : IScanner
     {
         private string Path { get; set; } // the path to the file that will be scanned
         private List<string> Lines { get; set; } // the list of lines (with line endings removed) in the file
@@ -21,7 +21,7 @@ namespace CompilerCore
         private bool IsAtEol { get { return CharSeek == CurrLine.Length; } }
         private bool IsAtEof { get { return LineSeek == Lines.Count; } }
 
-        internal Scanner(string path)
+        internal ScannerImpl(string path)
         {
             Path = path;
             Reload();
@@ -116,7 +116,7 @@ namespace CompilerCore
         }
 
         /// <summary>
-        /// (Re-)reads the file that this Scanner is associated with.
+        /// (Re-)reads the file that this ScannerImpl is associated with.
         /// Resets the seek to the beginning of the file and then
         /// moves the seek to right before the first non-whitespace character
         /// (or EOF if no such character is found).
