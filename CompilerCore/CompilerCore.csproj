@@ -43,6 +43,7 @@
     <Compile Include="Enums\DataType.cs" />
     <Compile Include="Impl\SymbolAttributeImpl.cs" />
     <Compile Include="Impl\SymbolImpl.cs" />
+    <Compile Include="Interfaces\ICompilerFrontend.cs" />
     <Compile Include="Interfaces\IScanner.cs" />
     <Compile Include="Interfaces\ISymbol.cs" />
     <Compile Include="Interfaces\ISymbolAttribute.cs" />
