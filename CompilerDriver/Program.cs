@@ -16,7 +16,7 @@ namespace CompilerDriver
             else
             {
                 var outputPath = args.Skip(1).FirstOrDefault();
-                var cf = new CompilerFrontend(args[0]);
+                var cf = Factory.FrontendFor(args[0]);
                 cf.Go(outputPath);
             }
 

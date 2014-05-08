@@ -1,4 +1,4 @@
-﻿namespace CompilerCore
+﻿namespace CompilerCore.Impl
 {
     internal class SymbolAttributeImpl : ISymbolAttribute
     {

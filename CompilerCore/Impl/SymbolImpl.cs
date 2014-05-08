@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CompilerCore
+namespace CompilerCore.Impl
 {
     internal class SymbolImpl : ISymbol
     {

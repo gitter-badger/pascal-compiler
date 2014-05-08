@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
-namespace CompilerCore
+namespace CompilerCore.Impl
 {
     internal class ScannerImpl : IScanner
     {

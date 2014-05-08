@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace CompilerCore
+namespace CompilerCore.Impl
 {
     internal class SymbolTableTreeImpl : ISymbolTable
     {

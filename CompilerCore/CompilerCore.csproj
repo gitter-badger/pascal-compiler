@@ -39,8 +39,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CompilerFrontend.cs" />
     <Compile Include="Enums\DataType.cs" />
+    <Compile Include="Factory.cs" />
+    <Compile Include="Impl\CompilerFrontendImpl.cs" />
     <Compile Include="Impl\SymbolAttributeImpl.cs" />
     <Compile Include="Impl\SymbolImpl.cs" />
     <Compile Include="Interfaces\ICompilerFrontend.cs" />

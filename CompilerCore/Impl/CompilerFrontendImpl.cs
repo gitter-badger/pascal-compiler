@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace CompilerCore
+namespace CompilerCore.Impl
 {
-    public class CompilerFrontend
+    internal class CompilerFrontendImpl : ICompilerFrontend
     {
         private IScanner Scanner { get; set; }
 
         private ISymbolTable SymbolTable { get; set; }
 
-        public CompilerFrontend(string path)
+        public CompilerFrontendImpl(string path)
         {
-            Scanner = new ScannerImpl(path);
-            SymbolTable = new SymbolTableTreeImpl();
+            Scanner = Factory.ScannerFor(path);
+            SymbolTable = Factory.SymbolTable();
         }
 
         public void Go(string outputPath = null)

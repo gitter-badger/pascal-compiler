@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace CompilerCore
+namespace CompilerCore.Impl
 {
     internal class SymbolTableLinkedImpl : ISymbolTable
     {
