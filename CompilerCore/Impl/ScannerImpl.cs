@@ -122,7 +122,7 @@ namespace CompilerCore.Impl
         /// (or EOF if no such character is found).
         /// This method is called by the constructor.
         /// </summary>
-        internal void Reload()
+        private void Reload()
         {
             Lines = File.ReadLines(Path).ToList();
             Tokens = new List<Tuple<string, int>>();
