@@ -8,6 +8,9 @@
 
         public DataType DataType { get; set; }
 
+        public int IntValue { get; set; }
+        public double DoubleValue { get; set; }
+
         public ISymbolAttribute ParentAttribute { get; private set; }
 
         internal SymbolAttributeImpl(ISymbolAttribute parent)

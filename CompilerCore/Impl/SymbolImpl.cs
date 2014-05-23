@@ -24,7 +24,6 @@ namespace CompilerCore.Impl
             var newAttr = new SymbolAttributeImpl(CurrentAttribute);
             Attributes.Add(newAttr);
             _currentAttribute = newAttr;
-            newAttr.TokenType = Utils.DetermineTokenTypeFrom(Lexeme);
         }
 
         internal void CloseCurrentScope()

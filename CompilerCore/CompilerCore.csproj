@@ -41,24 +41,42 @@
   <ItemGroup>
     <Compile Include="Enums\DataType.cs" />
     <Compile Include="Factory.cs" />
-    <Compile Include="Impl\CompilerFrontendImpl.cs" />
+    <Compile Include="Impl\EpsilonImpl.cs" />
+    <Compile Include="Impl\GrammarImpl.cs" />
+    <Compile Include="Impl\NonterminalImpl.cs" />
+    <Compile Include="Impl\ParseNodeImpl.cs" />
+    <Compile Include="Impl\ParseTableImpl.cs" />
+    <Compile Include="Impl\ProductionRuleImpl.cs" />
+    <Compile Include="Impl\TerminaImpl.cs" />
+    <Compile Include="Impl\ParserImpl.cs" />
     <Compile Include="Impl\SymbolAttributeImpl.cs" />
     <Compile Include="Impl\SymbolImpl.cs" />
-    <Compile Include="Interfaces\ICompilerFrontend.cs" />
+    <Compile Include="Interfaces\IEpsilon.cs" />
+    <Compile Include="Interfaces\IGrammar.cs" />
+    <Compile Include="Interfaces\ILexicalElement.cs" />
+    <Compile Include="Interfaces\INonterminal.cs" />
+    <Compile Include="Interfaces\IParseNode.cs" />
+    <Compile Include="Interfaces\IParser.cs" />
+    <Compile Include="Interfaces\IParseTable.cs" />
+    <Compile Include="Interfaces\IProductionRule.cs" />
     <Compile Include="Interfaces\IScanner.cs" />
     <Compile Include="Interfaces\ISymbol.cs" />
     <Compile Include="Interfaces\ISymbolAttribute.cs" />
     <Compile Include="Interfaces\ISymbolTable.cs" />
     <Compile Include="Impl\ScannerImpl.cs" />
     <Compile Include="Enums\SemanticType.cs" />
-    <Compile Include="Scope.cs" />
     <Compile Include="Impl\SymbolTableLinkedImpl.cs" />
     <Compile Include="Enums\TokenType.cs" />
-    <Compile Include="Impl\SymbolTableTreeImpl.cs" />
-    <Compile Include="Utils.cs" />
+    <Compile Include="Interfaces\ITerminal.cs" />
+    <Compile Include="Logger.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\NormalizedGrammar.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

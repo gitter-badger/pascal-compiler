@@ -31,7 +31,7 @@ namespace CompilerCore.Impl
         {
             if (IsAtEof)
             {
-                throw new InvalidOperationException("Reached end of file");
+                throw new InvalidOperationException("The EOF has been reached.");
             }
 
             var lexeme = "";
@@ -93,8 +93,21 @@ namespace CompilerCore.Impl
                         lexeme += ch;
                         MoveSeekForward();
                     }
+                    else
+                    {
+                        if (lexeme=="." && ch=='.')
+                        {
+                            lexeme += ch;
+                            MoveSeekForward();
+                        }
+                        else if (lexeme == ":" && ch == '=')
+                        {
+                            lexeme += ch;
+                            MoveSeekForward();
+                        }
 
-                    break;
+                        break;
+                    }
                 }
             }
 

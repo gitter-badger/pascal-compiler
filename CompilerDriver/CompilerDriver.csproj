@@ -51,13 +51,14 @@
     <Content Include="Inputs\Empty.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Inputs\FromSpec.txt">
+    <Content Include="Inputs\Sample1.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Inputs\Jason.txt">
+    <Content Include="Inputs\SyntaxError1.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if $(ConfigurationName) == Release goto deploy
@@ -65,12 +66,14 @@
 exit
 
 :deploy
-  rd /S /Q "$(SolutionDir)$(ConfigurationName)" 2&gt;NUL
+::  rd /S /Q "$(SolutionDir)$(ConfigurationName)" 2&gt;NUL
   md "$(SolutionDir)$(ConfigurationName)" 2&gt;NUL
   cd "$(SolutionDir)$(ConfigurationName)"
   xcopy /Y "$(TargetDir)$(TargetFileName)"
   xcopy /Y "$(TargetDir)*.dll"
-  xcopy /Y "..\CompilerDriver\Inputs\*.txt"</PostBuildEvent>
+  xcopy /Y /I "..\CompilerCore\Resources\*.txt" "Resources"
+  xcopy /Y "..\CompilerDriver\Inputs\*.txt"
+</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

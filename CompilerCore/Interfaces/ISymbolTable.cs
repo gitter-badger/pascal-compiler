@@ -2,10 +2,8 @@
 {
     public interface ISymbolTable
     {
-        bool ContainsString(string lexeme);
+        bool ContainsSymbol(string lexeme);
 
-        ISymbol GetSymbolFor(string lexeme);
-
-        ISymbol InstallSymbol(string lexeme);
+        ISymbol SymbolFor(string lexeme);
     }
 }
